@@ -1,0 +1,34 @@
+<!DOCTYPE html!>
+<html long="ja">
+	<head>
+		<meta charset="utf-8">
+		<title>canvaspra</title>
+	</head>
+	<body>
+		
+		<canvas id="canvas"width="640" height="640"></canvas>
+
+	</body>
+	<script>
+        
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+		const imagePaths = ["image/Byanusa.png","image/Byanusa2.png","image/Byanusa3.png"];
+        let ptr = 0;
+
+        const slideshow = () => {
+            console.log(ptr)
+            if (ptr === 2) ptr = 0;
+            else ptr++;
+
+            let chara = new Image();
+            chara.src = imagePaths[ptr];
+            ctx.drawImage(chara, 0, 0);
+
+            setTimeout(slideshow, 200);
+        }
+
+        window.onload = () => {
+            slideshow() 
+        };
+	</script>
